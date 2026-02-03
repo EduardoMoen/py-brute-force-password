@@ -21,7 +21,16 @@ def sha256_hash_str(to_hash: str) -> str:
 
 
 def brute_force_password() -> None:
-    pass
+    decoded_passwords = []
+    passwords = set(PASSWORDS_TO_BRUTE_FORCE)
+
+    for i in range(100000000):
+        i = f"{i: 08d}"
+        if sha256_hash_str(i) in passwords:
+            decoded_passwords.append(i)
+
+        if len(decoded_passwords) == 10:
+            break
 
 
 if __name__ == "__main__":
